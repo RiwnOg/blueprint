@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllTodos } from "../../lib/db";
+import FormPost from "./Form";
 
 export default async function Todo() {
   const todos = await getAllTodos();
@@ -11,10 +12,13 @@ export default async function Todo() {
         </h1>
         <Link href="/"> Go Home </Link>
       </div>
-      <div>Lista dos Todos</div>
+      <div>
+        <FormPost />
+        <p> Lista dos Todos</p>
+      </div>
       {todos.map((todo, index: number) => (
         <li key={todo.id}>
-          <h1 className="text-lg px-2 py-6">
+          <h1 className="text-lg px-2 py-2">
             {index + 1} - {todo.title}: {todo.content} ~{" "}
             {todo.published ? "Publicado" : "Rascunho"}
           </h1>
