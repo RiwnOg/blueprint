@@ -1,3 +1,49 @@
+import { tb_todo } from "@prisma/client";
+import Link from "next/link";
+import FormPost from "./Form";
+
+async function getTodos() {
+  const res = await fetch(`${process.env.BASE_URL}/api/todo`, {
+    method: "GET",
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    console.log("error_res ==>", res);
+  }
+  return res.json();
+}
+
+export default async function Todo() {
+  const todos: tb_todo[] = await getTodos();
+  return (
+    <>
+      <div>
+        <h1 className="text-3xl font-bold underline">
+          I&apos;m the Todo page! Using API
+        </h1>
+        <Link href="/"> Go Home </Link>
+      </div>
+      <div>
+        <FormPost />
+        <p> Lista dos Todos</p>
+      </div>
+      {todos.map((todo, index: number) => (
+        <li key={todo.id}>
+          <h1 className="text-lg px-2 py-2">
+            {index + 1} - {todo.title}: {todo.content} ~{" "}
+            {todo.published ? "Publicado" : "Rascunho"}
+          </h1>
+        </li>
+      ))}
+    </>
+  );
+}
+
+/*
+//
+// ESSE SNIPPET ESTÁ FUNCIONANDO!!!!
+// 
+
 import Link from "next/link";
 import { getAllTodos } from "../../lib/db";
 import FormPost from "./Form";
@@ -27,6 +73,7 @@ export default async function Todo() {
     </>
   );
 }
+*/
 
 /*
 import { tb_todo } from "@prisma/client";
