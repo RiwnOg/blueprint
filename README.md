@@ -27,5 +27,6 @@ npx tailwindcss init -p
 npm install typescript ts-node @types/node --save-dev
 npm install prisma --save-dev
 npm i @prisma/client
-npx prisma init --datasource-provider postgresql
+npx prisma init --datasource-provider mysql
+npx prisma db push
 npx prisma generate
