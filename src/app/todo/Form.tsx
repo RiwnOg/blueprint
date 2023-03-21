@@ -57,6 +57,7 @@ export default function FormPost() {
       <li style={{ opacity: !isMutating ? 1 : 0.7 }}>
         <button
           type="submit"
+          disabled={isMutating}
           className=" blockuppercase mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded"
         >
           Make a New Post
