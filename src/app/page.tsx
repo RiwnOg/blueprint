@@ -5,6 +5,7 @@ export default function Home() {
     <>
       <h1 className="text-3xl font-bold underline">Home Page</h1>
       <Link href="/todo"> Go Todo </Link>
+      <Link href="/post"> Go Posts </Link>
     </>
   );
 }
